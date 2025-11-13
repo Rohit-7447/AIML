@@ -99,9 +99,129 @@ int main() {
 
 
 
+// //Method : Taking input as csv from file==============
+// #include <iostream>
+// #include <vector>
+// #include <string>
+// #include <fstream>
+// #include <sstream>
+// #include <chrono>
+// #include <algorithm>
+// using namespace std;
 
+// class Movie {
+// public:
+//     string title;
+//     double imdbRating;
+//     int releaseYear;
+//     int watchCount;
 
+//     Movie(string t, double r, int y, int w)
+//         : title(t), imdbRating(r), releaseYear(y), watchCount(w) {}
+// };
 
+// // Partition function for QuickSort
+// int partition(vector<Movie>& movies, int low, int high, const string& sortBy) {
+//     Movie pivot = movies[low];
+//     int i = low + 1;
+//     int j = high;
+//     while (i <= j) {
+//         if (sortBy == "rating") {
+//             while (i <= high && movies[i].imdbRating <= pivot.imdbRating) i++;
+//             while (j >= low && movies[j].imdbRating > pivot.imdbRating) j--;
+//         } else if (sortBy == "year") {
+//             while (i <= high && movies[i].releaseYear <= pivot.releaseYear) i++;
+//             while (j >= low && movies[j].releaseYear > pivot.releaseYear) j--;
+//         } else if (sortBy == "watch") {
+//             while (i <= high && movies[i].watchCount <= pivot.watchCount) i++;
+//             while (j >= low && movies[j].watchCount > pivot.watchCount) j--;
+//         }
+//         if (i < j) {
+//             swap(movies[i], movies[j]);
+//         }
+//     }
+//     swap(movies[low], movies[j]);
+//     return j;
+// }
+
+// // QuickSort function
+// void quickSort(vector<Movie>& movies, int low, int high, const string& sortBy) {
+//     if (low < high) {
+//         int pivotIndex = partition(movies, low, high, sortBy);
+//         quickSort(movies, low, pivotIndex - 1, sortBy);
+//         quickSort(movies, pivotIndex + 1, high, sortBy);
+//     }
+// }
+
+// // Function to load movies from CSV
+// vector<Movie> loadMoviesFromCSV(const string& filename) {
+//     vector<Movie> movies;
+//     ifstream file(filename);
+//     if (!file.is_open()) {
+//         cout << "Error: Could not open file " << filename << endl;
+//         return movies;
+//     }
+
+//     string line;
+//     getline(file, line); // skip header
+
+//     while (getline(file, line)) {
+//         stringstream ss(line);
+//         string title, ratingStr, yearStr, watchStr;
+
+//         getline(ss, title, ',');
+//         getline(ss, ratingStr, ',');
+//         getline(ss, yearStr, ',');
+//         getline(ss, watchStr, ',');
+
+//         double rating = stod(ratingStr);
+//         int year = stoi(yearStr);
+//         int watchCount = stoi(watchStr);
+
+//         movies.push_back(Movie(title, rating, year, watchCount));
+//     }
+
+//     file.close();
+//     return movies;
+// }
+
+// int main() {
+//     string filename = "movies.csv";
+//     vector<Movie> movies = loadMoviesFromCSV(filename);
+
+//     if (movies.empty()) {
+//         cout << "No movies loaded. Exiting.\n";
+//         return 0;
+//     }
+
+//     string sortBy;
+//     cout << "Sort movies by (rating/year/watch): ";
+//     cin >> sortBy;
+
+//     transform(sortBy.begin(), sortBy.end(), sortBy.begin(), ::tolower);
+//     if (sortBy != "rating" && sortBy != "year" && sortBy != "watch") {
+//         cout << "Invalid sort option!" << endl;
+//         return 0;
+//     }
+
+//     auto start = chrono::high_resolution_clock::now();
+//     quickSort(movies, 0, movies.size() - 1, sortBy);
+//     auto end = chrono::high_resolution_clock::now();
+//     chrono::duration<double, milli> timeTaken = end - start;
+
+//     cout << "\nMovies sorted by " << sortBy << ":\n";
+//     printf("%-15s %-8s %-6s %-6s\n", "Title", "Rating", "Year", "Watch");
+//     cout << "-------------------------------------------\n";
+//     for (int i = 0; i < movies.size(); i++) {
+//         printf("%-15s %-8.1f %-6d %-6d\n",
+//                movies[i].title.c_str(),
+//                movies[i].imdbRating,
+//                movies[i].releaseYear,
+//                movies[i].watchCount);
+//     }
+//     printf("\nTime taken by QuickSort: %.3f ms\n", timeTaken.count());
+//     return 0;
+// }
 
 //Method 2 Pratik
 // #include <bits/stdc++.h>
